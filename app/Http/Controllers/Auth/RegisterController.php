@@ -50,6 +50,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // $validatedata = $request->validate([
+        // 'namagroup' => 'required', 'string', 'max:255',
+        // 'password' => 'required', 'string', 'min:8','regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/', 'confirmed',
+        // 'binus' =>'required',
+        // 'name' => 'required', 'string', 'max:255' ,
+        // 'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
+        // 'whatsapp' => 'required', 'min:9','unique:users',
+        // 'line' => 'required','unique:users',
+        // 'github'  => 'required',
+        // 'place'  => 'required',
+        // 'date'  => 'required',
+        // 'cv'   =>'required',
+        // 'card'  => 'required',
+        // ]);
+
         return Validator::make($data, [
             'namagroup' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8','regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/', 'confirmed'],
@@ -66,6 +81,8 @@ class RegisterController extends Controller
             // 'mimes:png,jpg,jpeg,pdf'
         ]);
     }
+
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -91,10 +108,10 @@ class RegisterController extends Controller
         ]);
     }
 
-    // public function register(Request $request){
+    // public function register(){
 
-    //     $cv = $request->file('cv'); /*menyimpan data file yang diupload ke variabel $file */
-    //     $card = $request->file('card');
+    //     $cv = request() ->file('cv'); /*menyimpan data file yang diupload ke variabel $file */
+    //     $card = request()->file('card');
 
 	//     $filecv = time()."_".$cv->getClientOriginalName();
     //     $filecard = time()."_".$card->getClientOriginalName();

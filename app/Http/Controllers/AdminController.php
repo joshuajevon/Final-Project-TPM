@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -12,6 +14,9 @@ class AdminController extends Controller
     public function adminparticipant(){
         $users = User::all(); //all itu mengambil seluruh data, $member declare var
         return view('adminparticipant', ['users' => $users]);
+
+        
+
     }
 
     public function admindashboard(){

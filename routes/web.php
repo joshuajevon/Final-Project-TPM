@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Middleware\IsAdminMiddleware;
+use App\Models\Member;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,10 @@ Route::get('/viewdataleader', [MemberController::class, 'viewdataleader'])->name
 
 Route::get('/viewdataleadercard', [MemberController::class, 'viewdataleadercard'])->name('viewdataleadercard');
 
+Route::get('/viewdataadmin', [MemberController::class, 'viewdataadmin'])->name('viewdataadmin');
+
+Route::get('/viewdataedit', [MemberController::class, 'viewdataedit'])->name('viewdataedit');
+
 Route::get('/payment', [ProjectController::class, 'payment'])->name('payment');
 
 Route::get('/timeline', [ProjectController::class, 'timeline'])->name('timeline');
@@ -54,5 +59,6 @@ Route::group(['middleware' => IsAdminMiddleware::class], function (){
 
 Route::delete('/delete/{id}', [AdminController::class, 'delete'])->name('delete');
 
+Route::get('/updatemember/{id}', [MemberController::class, 'getDataById'])->name('getDataById');
 
-
+Route::patch('/updatemember/{id}', [MemberController::class, 'updatemember'])->name('updatemember');

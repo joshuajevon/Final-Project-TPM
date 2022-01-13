@@ -63,11 +63,15 @@
             <tr>
                 <th scope="row">{{ $user->id}}</th>
                 <td>{{ $user->namagroup}}</td>
-                <td> <form action="{{route('bukti')}}">
+                <td> <form action="{{route('viewdataadmin')}}">
                     <button type="submit" class="btn btn-primary">View</button>
                 </form>
             </td>
                 <td>
+                    <form action="{{route('viewdataedit')}}">
+                        <button type="submit" class="btn btn-success">Edit</button>
+                    </form>
+
                   <form action="{{route('delete', ['id' =>$user->id])}}" method="post">
                   @csrf
                   @method('delete')

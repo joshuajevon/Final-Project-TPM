@@ -15,6 +15,7 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
+            $table->string('namagroup');
             $table->string('namemember');
             $table->string('email1')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -25,7 +26,7 @@ class CreateMembersTable extends Migration
             $table->date('date1');
             $table->string('cv1');
             $table->string('card1');
-            
+
             $table->timestamps();
         });
     }

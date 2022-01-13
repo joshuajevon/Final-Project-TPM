@@ -10,6 +10,7 @@ class Member extends Model
     use HasFactory;
 
     protected $fillable = [
+        'namagroup',
         'namemember',
         'email1',
         'whatsapp1',

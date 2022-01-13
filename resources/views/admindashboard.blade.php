@@ -67,7 +67,18 @@
                 <td>{{ $user->namagroup}}</td>
                 <td>100.000</td>
                 <td>status</td>
-                <td>verified / unverified</td>
+                <td>
+                    <form action="">
+                        <select name="binus" id="binus" class="form-select @error('binus') is-invalid @enderror" value="{{ old('binus') }}">
+                            <option selected></option>
+                            <option>Verified</option>
+                            <option>Unverified</option>
+                        </select>
+
+                        <button type="submit" class="btn btn-info">Submit</button>
+                    </form>
+
+                </td>
                 <td>
                     <form action="{{route('bukti')}}">
                         <button type="submit" class="btn btn-primary">View</button>

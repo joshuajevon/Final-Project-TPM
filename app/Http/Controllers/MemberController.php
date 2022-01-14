@@ -47,6 +47,7 @@ class MemberController extends Controller
         $members = Member::where('namagroup','like', Auth::user()->namagroup)->get();
         return view('dashboard', ['members' => $members]);
     }
+    
 
     public function viewdataleader(){
         $users = User::all(); //all itu mengambil seluruh data, $member declare var
@@ -59,11 +60,17 @@ class MemberController extends Controller
     }
 
     public function viewdataadmin(){
-        $members = Member::all(); //all itu mengambil seluruh data, $member declare var
-        return view('viewdataadmin', ['members' => $members]);
 
         $users = User::all(); //all itu mengambil seluruh data, $member declare var
         return view('viewdataadmin', ['users' => $users]);
+    }
+
+    public function viewdatamemberadmin(){
+
+        $members = Member::all(); //all itu mengambil seluruh data, $member declare var
+        return view('viewdatamemberadmin', ['members' => $members]);
+
+
     }
 
     public function viewdataedit(){
@@ -71,9 +78,20 @@ class MemberController extends Controller
         return view('viewdataedit', ['members' => $members]);
     }
 
+    public function viewdataeditleader(){
+        $users = User::all(); //all itu mengambil seluruh data, $member declare var
+        return view('viewdataeditleader', ['users' => $users]);
+    }
+
     public function getDataById($id){
         $member = Member::find($id);
         return view('updatemember' ,['member' => $member]);
+
+    }
+
+    public function getDataLeaderById($id){
+        $user = User::find($id);
+        return view('updateleader' ,['user' => $user]);
 
     }
 
@@ -115,4 +133,39 @@ class MemberController extends Controller
         ]);
         return redirect(route('viewdataedit'));
     }
+
+
+    public function updateleader(Request $request, $id){
+        $user = User::find($id);
+
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->whatsapp = $request->whatsapp;
+        $user->line = $request->line;
+        $user->github = $request->github;
+        $user->place = $request->place;
+        $user->date = $request->date;
+        $user->cv = $request->cv;
+        $user->card = $request->card;
+
+        $user -> save();
+
+        $user -> update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'whatsapp' => $request->whatsapp,
+            'line' => $request->line,
+            'github' => $request->github,
+            'place' => $request->place,
+            'date' => $request->date,
+            'cv' => $request->cv,
+            'card' => $request->card,
+        ]);
+        return redirect(route('viewdataeditleader'));
+    }
 }
+
+
+
+

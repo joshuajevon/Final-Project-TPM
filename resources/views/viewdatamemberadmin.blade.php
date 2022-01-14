@@ -18,74 +18,23 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/viewdataadmin">Data Leader</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="/viewdatamemberadmin">Data member</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="/adminparticipant">Back</a>
-              </li>
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/viewdataadmin">Data Leader</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/viewdatamemberadmin">Data member</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/adminparticipant">Back</a>
+                  </li>
 
           </div>
         </div>
       </nav>
 
       <h1>View Data</h1>
-      <h2>DATA LEADER</h2>
 
-      <table class="table table-dark table-striped table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">Group Name</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Whatsapp Number</th>
-            <th scope="col">Line ID</th>
-            <th scope="col">Git Hub</th>
-            <th scope="col">Birth Place</th>
-            <th scope="col">Birth Date</th>
-            <th scope="col">CV</th>
-            <th scope="col">Flazz Card / ID Card</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
-            {{-- looping --}}
-            <tr>
-                <td>
-                    {{$user->namagroup}}
-                </td>
-                <td>
-                    {{$user->name}}
-                </td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->whatsapp }}</td>
-                <td>{{ $user->line }}</td>
-                <td>{{ $user->github }}</td>
-                <td>{{ $user->place }}</td>
-                <td>{{ $user->date }}</td>
-                <td>
-                    {{-- CV : {{ Auth::user()->cv }} --}}
-                    <form action="{{route('viewdataleader')}}">
-                        @csrf
-                        <button type="submit" class="btn btn-secondary btn-lg">View</button>
-                    </form>
-                </td>
-                <td>
-                    <form action="{{route('viewdataleadercard')}}">
-                        @csrf
-                        <button type="submit" class="btn btn-secondary btn-lg">View</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-      </table>
-
-    <br>
-      {{-- <h1>Data Member</h1>
+       <h1>Data Member</h1>
       <table class="table table-dark table-striped table-bordered">
         <thead>
           <tr>
@@ -105,7 +54,7 @@
         <tbody>
             @foreach ($members as $member )
             {{-- looping --}}
-            {{-- <tr>
+            <tr>
                 <th scope="row">{{ $member->id}}</th>
                 <td>{{ $member->namagroup}}</td>
                 <td>{{ $member->namemember}}</td>
@@ -120,7 +69,7 @@
             </tr>
             @endforeach
         </tbody>
-      </table> --}}
+      </table>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

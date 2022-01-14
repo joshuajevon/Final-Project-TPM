@@ -20,5 +20,6 @@ class Member extends Model
         'date1',
         'cv1',
         'card1',
+        // 'verify',
     ];
 }

@@ -105,6 +105,7 @@ class RegisterController extends Controller
             'date'  => $data['date'] ,
             'cv'   => $data['cv'] ,
             'card'  => $data['card'],
+            // 'verify' => $data['verify']->nullable(),
         ]);
     }
 

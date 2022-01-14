@@ -68,7 +68,7 @@
                 </form>
             </td>
                 <td>
-                    <form action="{{route('viewdataedit')}}">
+                    <form action="{{route('viewdataeditleader')}}">
                         <button type="submit" class="btn btn-success">Edit</button>
                     </form>
 

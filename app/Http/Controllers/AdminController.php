@@ -14,14 +14,12 @@ class AdminController extends Controller
     public function adminparticipant(){
         $users = User::all(); //all itu mengambil seluruh data, $member declare var
         return view('adminparticipant', ['users' => $users]);
-
-        
-
     }
 
     public function admindashboard(){
         $users = User::all(); //all itu mengambil seluruh data, $member declare var
         return view('admindashboard', ['users' => $users]);
+
     }
 
     public function bukti(){
@@ -50,5 +48,13 @@ class AdminController extends Controller
 
         return redirect(route('payment'));
     }
+
+    public function uploadverify(Request $request){
+        User::create([
+            'verify'=> $request->verify,
+        ]);
+        return redirect(route('admindashboard'));
+    }
+
 }
 

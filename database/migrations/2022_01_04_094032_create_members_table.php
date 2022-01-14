@@ -26,7 +26,7 @@ class CreateMembersTable extends Migration
             $table->date('date1');
             $table->string('cv1');
             $table->string('card1');
-
+            // $table->string('verify')->nullable();
             $table->timestamps();
         });
     }

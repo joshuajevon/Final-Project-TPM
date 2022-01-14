@@ -37,7 +37,11 @@ Route::get('/viewdataleadercard', [MemberController::class, 'viewdataleadercard'
 
 Route::get('/viewdataadmin', [MemberController::class, 'viewdataadmin'])->name('viewdataadmin');
 
+Route::get('/viewdatamemberadmin', [MemberController::class, 'viewdatamemberadmin'])->name('viewdatamemberadmin');
+
 Route::get('/viewdataedit', [MemberController::class, 'viewdataedit'])->name('viewdataedit');
+
+Route::get('/viewdataeditleader', [MemberController::class, 'viewdataeditleader'])->name('viewdataeditleader');
 
 Route::get('/payment', [ProjectController::class, 'payment'])->name('payment');
 
@@ -46,6 +50,8 @@ Route::get('/timeline', [ProjectController::class, 'timeline'])->name('timeline'
 Route::post('/insert-member' ,[MemberController::class, 'insertMember'])->name('insertMember');
 
 Route::post('/upload-data' ,[AdminController::class, 'uploadData'])->name('uploadData');
+
+Route::post('/upload-verify' ,[AdminController::class, 'uploadverify'])->name('uploadverify');
 
 Route::get('/member', [MemberController::class, 'member'])->name('member');
 
@@ -62,3 +68,7 @@ Route::delete('/delete/{id}', [AdminController::class, 'delete'])->name('delete'
 Route::get('/updatemember/{id}', [MemberController::class, 'getDataById'])->name('getDataById');
 
 Route::patch('/updatemember/{id}', [MemberController::class, 'updatemember'])->name('updatemember');
+
+Route::get('/updateleader/{id}', [MemberController::class, 'getDataLeaderById'])->name('getDataLeaderById');
+
+Route::patch('/updateleader/{id}', [MemberController::class, 'updateleader'])->name('updateleader');

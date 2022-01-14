@@ -66,16 +66,19 @@
                 <th scope="row">{{ $user->id}}</th>
                 <td>{{ $user->namagroup}}</td>
                 <td>100.000</td>
-                <td>status</td>
+                <td>{{ $user->verify}}</td>
                 <td>
-                    <form action="">
-                        <select name="binus" id="binus" class="form-select @error('binus') is-invalid @enderror" value="{{ old('binus') }}">
+                    <form action="{{route('uploadverify')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <select name="verify" id="verify" class="form-select @error('verify') is-invalid @enderror" value="{{ old('verify') }}">
                             <option selected></option>
                             <option>Verified</option>
                             <option>Unverified</option>
                         </select>
 
                         <button type="submit" class="btn btn-info">Submit</button>
+
+
                     </form>
 
                 </td>

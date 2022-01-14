@@ -98,9 +98,12 @@
 
 
   <br>
-  -	Verifikasi Pembayaran
-  <br>
-●	Ketentuan Verifikasi Pembayaran.
+  -	Verifikasi Pembayaran =
+@foreach ($users as $user )
+{{-- <br> --}}
+    {{ $user->verify}}
+  @endforeach
+
 <br>
 -	Early Bird Offer
 <br>

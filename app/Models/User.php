@@ -30,6 +30,7 @@ class User extends Authenticatable
         'date',
         'cv',
         'card',
+        'verify'
     ];
 
     /**

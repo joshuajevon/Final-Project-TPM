@@ -92,6 +92,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $cv = request() ->file('cv'); /*menyimpan data file yang diupload ke variabel $file */
+        $card = request()->file('card');
+
+	    $filecv = time()."_".$cv->getClientOriginalName();
+        $filecard = time()."_".$card->getClientOriginalName();
+
+	    $tujuan_upload = 'data_file'; /*isi dengan nama folder tempat kemana file diupload */
+	    $cv->move($tujuan_upload,$filecv);
+        $card->move($tujuan_upload,$filecard);
+
         return User::create([
             'namagroup' => $data['namagroup'],
             'password' => Hash::make($data['password']),
@@ -103,8 +114,8 @@ class RegisterController extends Controller
             'github'  => $data['github'],
             'place'  => $data['place'] ,
             'date'  => $data['date'] ,
-            'cv'   => $data['cv'] ,
-            'card'  => $data['card'],
+            'cv'   => $filecv ,
+            'card'  => $filecard,
             // 'verify' => $data['verify']->nullable(),
         ]);
     }

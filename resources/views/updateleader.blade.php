@@ -8,14 +8,14 @@
                 <div class="card-header">{{ __('Update Data Leader') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{route('updateleader', ['id' => $user -> id])}}">
+                    <form method="POST" action="{{route('updateleader', ['id' => $user -> id])}}" enctype="multipart/form-data">
                         @csrf
                         @method('patch')
 
                         <div class="card-header">{{ __('Informasi Leader') }}</div>
 
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row mb-3">

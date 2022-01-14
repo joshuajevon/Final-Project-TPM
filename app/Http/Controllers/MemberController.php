@@ -47,7 +47,7 @@ class MemberController extends Controller
         $members = Member::where('namagroup','like', Auth::user()->namagroup)->get();
         return view('dashboard', ['members' => $members]);
     }
-    
+
 
     public function viewdataleader(){
         $users = User::all(); //all itu mengambil seluruh data, $member declare var
@@ -138,6 +138,15 @@ class MemberController extends Controller
     public function updateleader(Request $request, $id){
         $user = User::find($id);
 
+        $cv = request() ->file('cv'); /*menyimpan data file yang diupload ke variabel $file */
+        $card = request()->file('card');
+
+	    $filecv = time()."_".$cv->getClientOriginalName();
+        $filecard = time()."_".$card->getClientOriginalName();
+
+	    $tujuan_upload = 'data_file'; /*isi dengan nama folder tempat kemana file diupload */
+	    $cv->move($tujuan_upload,$filecv);
+        $card->move($tujuan_upload,$filecard);
 
         $user->name = $request->name;
         $user->email = $request->email;
@@ -159,8 +168,8 @@ class MemberController extends Controller
             'github' => $request->github,
             'place' => $request->place,
             'date' => $request->date,
-            'cv' => $request->cv,
-            'card' => $request->card,
+            'cv' => $filecv,
+            'card' => $filecard,
         ]);
         return redirect(route('viewdataeditleader'));
     }

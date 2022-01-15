@@ -5,47 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hackaton</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Hackaton</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="/admin">Dashboard</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="/adminparticipant">Participant</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                   Log Out
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <!-- <i id="java" class='bx bxl-java'></i> -->
+                <img id="svg" src="logo hackathon.svg" alt="">
+                <div class="logo_name">Welcome Back</div>
+            </div>
+            <!-- <i class='bx bx-menu' id="btn" ></i> -->
+        </div>
+        <ul class="nav_list">
+            <li>
+                <a href="#satu">
+                    <i class='bx bx-box bx-sm bx-tada-hover' ></i>
+                    <span class="links_name">Dashboard</span>
                 </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="#dua">
+                    <i class='bx bx-user bx-sm bx-tada-hover'></i>
+                    <span class="links_name">Participant</span>
+                </a>
+                <span class="tooltip">Participant</span>
 
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                        {{ __('Click') }}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
             </li>
 
-          </div>
-        </div>
-      </nav>
+            <li>
+                <form id="logout-form"action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                    <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        <i class='bx bx-log-out bx-sm bx-tada-hover' ></i>
+                        <span class="links_name">Log out</span>
+                    </a>
+                    <span class="tooltip">Log out</span>
+                </form>
+            </li>
+        </ul>
+    </div>
 
-      <h1>admin participant</h1>
+      {{-- <h1>admin participant</h1>
 
       <h1>Data Tim</h1>
       <table class="table table-dark table-striped table-bordered">
@@ -60,7 +63,7 @@
         <tbody>
             @foreach ($users as $user )
             {{-- looping --}}
-            <tr>
+            {{-- <tr>
                 <th scope="row">{{ $user->id}}</th>
                 <td>{{ $user->namagroup}}</td>
                 <td> <form action="{{route('viewdataadmin')}}">
@@ -82,8 +85,71 @@
             </tr>
             @endforeach
         </tbody>
-      </table>
+      </table> --}}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <div id="dua" class="participant">
+        <div class="baru2">
+            <h1  class="babi2">Participant</h1>
+
+            <div class="filter3">
+                <div class="filter4">
+                    <i class='bx bx-filter-alt bx-sm'></i>
+                    <h2>Filter</h2>
+                    <div class="search2">
+                        <input class="cari2" type="text" placeholder="Search">
+                        <i class='bx bx-search' ></i>
+                    </div>
+                </div>
+                <div class="filter5">
+                    <!-- <a href="#">All</a>
+                    <a href="#">Verified</a>
+                    <a href="#">Unverified</a>
+                    <a href="#">Rejected</a> -->
+
+                    <button>All</button>
+                    <button>Verified</button>
+                    <button>Unverified</button>
+                    <button>Rejected</button>
+                </div>
+
+        <table class="content-table2">
+            <thead>
+                <tr>
+                    <th class="satu2">Group <i class='bx bx-down-arrow-alt'></i></th>
+                    <th>View</th>
+                    <th>Edit</th>
+                    <th class="satu3">Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach ($users as $user )
+                <tr>
+                    <td>{{ $user->namagroup}}</td>
+                    <td>
+                        <a id="oren" class='bx bx-low-vision bx-sm tada-hover' href="/viewdataadmin"></a>
+                        {{-- <form action="{{route('viewdataadmin')}}">
+                            <button type="submit" class="btn btn-primary">View</button>
+                        </form> --}}
+                    </td>
+                    <td>
+                        <a id="putih"class='bx bx-pencil bx-sm tada-hover' href="/viewdataeditleader" ></a>
+                        {{-- <form action="{{route('viewdataeditleader')}}">
+                            <button id type="submit" class="btn btn-success">Edit</button>
+                        </form> --}}
+                    </td>
+                    <td>
+                        {{-- <a id="mewah" class='bx bx-trash bx-sm tada-hover' href="#"></a> --}}
+                        <form action="{{route('delete', ['id' =>$user->id])}}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button id="mewah" type="submit" class="bx bx-trash bx-sm tada-hover"></button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

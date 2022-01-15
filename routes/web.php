@@ -72,3 +72,13 @@ Route::patch('/updatemember/{id}', [MemberController::class, 'updatemember'])->n
 Route::get('/updateleader/{id}', [MemberController::class, 'getDataLeaderById'])->name('getDataLeaderById');
 
 Route::patch('/updateleader/{id}', [MemberController::class, 'updateleader'])->name('updateleader');
+
+Route::get('/cari', [AdminController::class, 'cari'])->name('cari');
+
+Route::get('/cari1', [MemberController::class, 'cari1'])->name('cari1');
+
+Route::get('/cari2', [MemberController::class, 'cari2'])->name('cari2');
+
+Route::get('/main', [AdminController::class, 'main'])->name('main');
+
+Route::get('sort', [AdminController::class, 'sort'])->name('sort');

@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    color: white
+}
+
+body {
+    background-color: #0E0A4D;
+}
+
+#login{
+    height: 550px;
+    width: 800px;
+    background: radial-gradient(89.5% 89.5% at 18.65% 4.89%, rgba(201, 196, 255, 0.36) 0%, rgba(196, 196, 196, 0.06) 100%);
+
+    margin: 100px 60px 60px 380px;
+    border-radius: 20px;
+}
+
+.login2{
+    padding: 80px 10px 10px 90px;
+}
+
+.login2 h1{
+    padding-left: 175px;
+    font-size: 40px;
+
+}
+
+.isi{
+    padding-top: 50px;
+
+}
+
+.isi h3{
+    padding-bottom: 10px;
+}
+
+.isi #lol{
+    margin-bottom: 20px;
+}
+
+.isi input{
+    width: 580px;
+    height: 35px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-left: 15px;
+    border: 1px solid white;
+    /* color: black; */
+    background-color: transparent;
+}
+
+.isi input::placeholder{
+    /* padding-left: 15px; */
+    color: white;
+}
+
+.isi input:focus{
+    padding-left: 15px;
+    outline: none;
+
+}
+
+.isi input:focus::placeholder{
+    opacity: 0;
+
+}
+
+.login2 a{
+    padding-left: 490px ;
+    text-decoration: none;
+}
+
+.login2 a:hover{
+    color: #BAB3DE
+
+}
+.baten{
+    padding-top: 30px;
+    padding-left: 240px;
+}
+
+.baten button{
+    height: 40px;
+    width: 140px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    /* background-color: #BAB3DE; */
+    background: -webkit-linear-gradient(#E94F11,#FF725E);
+
+}
+
+.baten button:hover{
+    background-color: #BAB3DE;
+
+}
+
+.login2 #dua{
+    padding-left: 175px ;
+    text-decoration: none;
+    padding-bottom:20px ;
+    margin-bottom: 500px;
+    margin-top: 30px;
+}

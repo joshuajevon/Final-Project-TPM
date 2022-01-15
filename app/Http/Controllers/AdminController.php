@@ -7,6 +7,7 @@ use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -17,9 +18,11 @@ class AdminController extends Controller
     }
 
     public function admindashboard(){
+        // $users =DB::table('users')->paginate(10); //all itu mengambil seluruh data, $member declare var
+        // return view('admindashboard', ['users' => $users]);
+
         $users = User::all(); //all itu mengambil seluruh data, $member declare var
         return view('admindashboard', ['users' => $users]);
-
     }
 
     public function bukti(){
@@ -29,7 +32,7 @@ class AdminController extends Controller
 
     public function delete($id){
         User::destroy($id);
-        return redirect(route('adminparticipant'));
+        return redirect(route('admindashboard'));
     }
 
     public function uploadData(Request $request){
@@ -46,7 +49,7 @@ class AdminController extends Controller
             'bukti'=> $filebukti,
         ]);
 
-        return redirect(route('payment'));
+        return redirect(route('dashboard'));
     }
 
     public function uploadverify(Request $request){
@@ -54,6 +57,29 @@ class AdminController extends Controller
             'verify'=> $request->verify,
         ]);
         return redirect(route('admindashboard'));
+    }
+
+    public function cari(Request $request){
+        // menangkap data pencarian
+        $cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $users = DB::table('users')
+        ->where('namagroup','like',"%".$cari."%")->paginate();
+
+        // mengirim data pegawai ke view index
+    return view('admindashboard',['users' => $users]);
+    }
+
+    public function sort(){
+        $users = User::orderBy('namagroup')->get()->except(1);
+        return view('admindashboard', ['users' => $users]);
+    }
+
+
+
+    public function main(){
+        return view('main');
     }
 
 }

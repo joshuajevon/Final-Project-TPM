@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,98 +6,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hackaton</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('/css/app.css')}}">
-
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+        </style>
+<link rel="stylesheet" href="{{asset('/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('/css/view.css')}}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Hackaton</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link  active" aria-current="page" href="/viewdataeditleader">Edit Leader</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/viewdataedit">Edit Member</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/adminparticipant">Back</a>
-              </li>
-
-          </div>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <!-- <i id="java" class='bx bxl-java'></i> -->
+                <img id="svg" src="logo hackathon.svg" alt="">
+                <div class="logo_name">Welcome Back</div>
+            </div>
+            <!-- <i class='bx bx-menu' id="btn" ></i> -->
         </div>
-      </nav>
+        <ul class="nav_list">
+            <li>
+                <a href="viewdataeditleader">
+                    <i class='bx bx-box bx-sm bx-tada-hover' ></i>
+                    <span class="links_name">Data Leader</span>
+                </a>
+                <span class="tooltip">Data Leader</span>
+            </li>
+            <li>
+                <a href="viewdataedit">
+                    <i class='bx bx-user bx-sm bx-tada-hover'></i>
+                    <span class="links_name">Data Member</span>
+                </a>
+                <span class="tooltip">Data Member</span>
 
-      <h1>Edit Data</h1>
-      <h2>DATA LEADER</h2>
+            </li>
 
-      <table class="table table-dark table-striped table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Group Name</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Whatsapp Number</th>
-            <th scope="col">Line ID</th>
-            <th scope="col">Git Hub</th>
-            <th scope="col">Birth Place</th>
-            <th scope="col">Birth Date</th>
-            <th scope="col">CV</th>
-            <th scope="col">Flazz Card / ID Card</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
-            {{-- looping --}}
-            <tr>
-                <td>
-                    {{$user->id}}
-                </td>
-                <td>
-                    {{$user->namagroup}}
-                </td>
-                <td>
-                    {{$user->name}}
-                </td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->whatsapp }}</td>
-                <td>{{ $user->line }}</td>
-                <td>{{ $user->github }}</td>
-                <td>{{ $user->place }}</td>
-                <td>{{ $user->date }}</td>
-                <td>
-                    {{-- CV : {{ Auth::user()->cv }} --}}
-                    <form action="{{route('viewdataleader')}}">
-                        @csrf
-                        <button type="submit" class="btn btn-secondary btn-lg">View</button>
-                    </form>
-                </td>
-                <td>
-                    <form action="{{route('viewdataleadercard')}}">
-                        @csrf
-                        <button type="submit" class="btn btn-secondary btn-lg">View</button>
-                    </form>
-                </td>
-                <td>
-                    <a href="{{route('getDataLeaderById', ['id' => $user -> id])}}">
-                        <button type="submit" class="btn btn-success">Edit</button>
-                    </a>
+            <li>
+                <a href="admin#dua">
+                    <i class='bx bx-log-out  bx-sm bx-tada-hover' ></i>
+                    <span class="links_name">Back</span>
+                </a>
+                <span class="tooltip">Back</span>
 
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-      </table>
+            </li>
+        </ul>
+
+    </div>
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    @foreach ($users as $user)
+    <div class="container">
+        <h1 class="lead">   {{$user->namagroup}}</h1>
+    <div class="milih">
+        <div class="baten">
+            <div class="banten">
+        <button>Leader</button>
+                </div>
+        <div class="konten">
+            <i class='bx bx-user bx-sm' ></i>
+            <h4 id="ini"> {{$user->name}}</h4>
+        </div>
+        <div class="konten">
+            <i class='bx bx-been-here bx-sm' ></i>
+            <h4 id="ini">{{ $user->place }}</h4>
+        </div>
+        <div class="konten">
+            <i class='bx bx-calendar bx-sm' ></i>
+            <h4 id="ini">{{ $user->date }}</h4>
+        </div>
+        <div class="konten">
+            <i class='bx bx-mail-send bx-sm' ></i>
+            <h4 id="ini">{{ $user->email }}</h4>
+        </div>
+        <div class="konten">
+            <i class='bx bxl-whatsapp bx-sm' ></i>
+            <h4 id="ini">{{ $user->whatsapp }}</h4>
+        </div>
+        <div class="konten">
+            <i class='bx bxl-instagram bx-sm' ></i>
+            <h4 id="ini">{{ $user->line }}</h4>
+        </div>
+        <div class="konten">
+            <i class='bx bxl-github bx-sm' ></i>
+            <h4 id="ini">{{ $user->github }}</h4>
+        </div>
+        <div class="konten">
+            <i class='bx bx-file bx-sm' ></i>
+            <a id="tombol"class='bx bx-low-vision bx-sm' href="/viewdataleader" ></a>
+
+
+        </div>
+        <div class="konten">
+            <i class='bx bx-photo-album bx-sm' ></i>
+            <a id="tombol"class='bx bx-low-vision bx-sm' href="/viewdataleadercard" ></a>
+        </div>
+        <div class="konten">
+            <a id="putih"class='bx bx-pencil bx-sm tada-hover'  ></a>
+
+            <a href="{{route('getDataLeaderById', ['id' => $user -> id])}}">
+                {{-- <button type="submit" class="btn btn-success">Edit</button> --}}
+                <button id="tomboledit" type="submit" class='bx bx-file-blank bx-sm' style='color:#ffffff' ></button>
+            </a>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+@endforeach
+
+
 </body>
 </html>

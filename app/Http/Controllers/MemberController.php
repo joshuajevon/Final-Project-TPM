@@ -6,6 +6,7 @@ use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
@@ -60,17 +61,44 @@ class MemberController extends Controller
     }
 
     public function viewdataadmin(){
-
-        $users = User::all(); //all itu mengambil seluruh data, $member declare var
+        $users =DB::table('users')->paginate(10); //all itu mengambil seluruh data, $member declare var
         return view('viewdataadmin', ['users' => $users]);
+
+        // $users = User::all(); //all itu mengambil seluruh data, $member declare var
+        // return view('viewdataadmin', ['users' => $users]);
     }
 
     public function viewdatamemberadmin(){
-
-        $members = Member::all(); //all itu mengambil seluruh data, $member declare var
+        $members =DB::table('members')->paginate(10); //all itu mengambil seluruh data, $member declare var
         return view('viewdatamemberadmin', ['members' => $members]);
 
+        // $members = Member::all(); //all itu mengambil seluruh data, $member declare var
+        // return view('viewdatamemberadmin', ['members' => $members]);
+    }
 
+    public function cari1(Request $request){
+        // menangkap data pencarian
+        $cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $users = DB::table('users')
+        ->where('namagroup','like',"%".$cari."%")->paginate();
+
+        // mengirim data pegawai ke view index
+    return view('viewdataadmin',['users' => $users]);
+    }
+
+
+    public function cari2(Request $request){
+        // menangkap data pencarian
+        $cari = $request->cari;
+
+        // mengambil data dari table pegawai sesuai pencarian data
+        $members = DB::table('members')
+        ->where('namemember','like',"%".$cari."%")->paginate();
+
+        // mengirim data pegawai ke view index
+    return view('viewdatamemberadmin',['members' => $members]);
     }
 
     public function viewdataedit(){
